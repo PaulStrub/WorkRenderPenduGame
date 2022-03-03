@@ -168,7 +168,38 @@ namespace PenduPOO
                                 "bosnie" ,
                                 "malte"};
 
-            string[] listB = { "" };
+            string[] listB = { "anticonstitutionnellement" ,
+                    "hippopotomonstrosesquippedaliophobie" ,
+                    "cyclopentanoperhydrophénanthrène" ,
+                    "glycosylphosphatidyléthanolamine" ,
+                    "psychopharmacothérapeutique" ,
+                    "myélosaccoradiculographie" ,
+                    "oligoasthénotératospermie" ,
+                    "électroconvulsivothérapie" ,
+                    "ntradermotuberculination" ,
+                    "aminométhylpyrimidinylhydroxyéthylméthythiazolium" ,
+                    "glycosylphosphatidylinositol" ,
+                    "orthochlorobenzalmalonitrile" ,
+                    "embrouillamini" ,
+                    "remembrance" ,
+                    "emberlucoquer" ,
+                    "ebaudir" ,
+                    "embabouiner" ,
+                    "posteromanie" ,
+                    "estafette" ,
+                    "nyctalope" ,
+                    "foutriquet" ,
+                    "avocette" ,
+                    "billevesee" ,
+                    "mireliflore" ,
+                    "intergouvernementalisation" ,
+                    "lilonwais" +
+                    "bruxomanie" +
+                    "chleuasme" +
+                    "fuligineux" +
+                    "ziggourat" +
+                    "vesanie"};
+
 
             if (lvl == "1") 
             {
