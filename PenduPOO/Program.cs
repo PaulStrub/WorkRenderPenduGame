@@ -5,11 +5,11 @@ using System.Collections;
 namespace PenduPOO
 {
 
-
     public class program {
-        static void Main(string[] args)
+        static void Main(string[] args) //launch the game
         {
             Play();
+            
         }
 
         public static char[] PrintableTab;
@@ -17,7 +17,7 @@ namespace PenduPOO
         public static string Word;
         public static int HP = 6;
 
-        static void Play()
+        static void Play() // starting of the game 
         {
             Console.WriteLine("Bonjour ! bienvenue dans ce jeu du pendu ");
             Thread.Sleep(500);
@@ -25,7 +25,7 @@ namespace PenduPOO
             ChoiceLvl();
         }
 
-        static void ChoiceLvl()
+        static void ChoiceLvl() // choice what difficulty the player want 
         {
             Console.WriteLine("Comme on est gentil on te laisse le choix de la difficulté, écrit 1 pour un niveau facile et 2 pour un niveau impossible :");
             string answer = Console.ReadLine();
@@ -38,7 +38,7 @@ namespace PenduPOO
             Word = GenerateWords(answer);
             bool win = PlayTime();
         }
-        static string GenerateWords(string lvl)
+        static string GenerateWords(string lvl) //generate a random word depending of the difficulty level
         {
             
             string[] listA = {  };
@@ -62,7 +62,7 @@ namespace PenduPOO
             }
         }
 
-        static char[] initPrintableTab(string word)
+        static char[] initPrintableTab(string word) //initialize the tab witch countains char of the word when the player give us 
         {
             char[] tab = new char[word.Length];
             for (int i = 0; i < word.Length; i++)
@@ -72,7 +72,7 @@ namespace PenduPOO
             return tab;
         }
 
-        static bool PlayTime()
+        static bool PlayTime() //function that is player turn 
         {
 
             bool winGame = false;
@@ -101,7 +101,7 @@ namespace PenduPOO
             return true; 
         }
 
-        static void printPendu()
+        static void printPendu() //This function is use to print on the consol the step of the game, it returns the HP number, letters that the player has already gave us and witch aren't in the word, letters that the player has already gave us and witch are in the word, moreover a drawing.
         {
 
             Console.Clear();
@@ -197,7 +197,7 @@ namespace PenduPOO
             }
         }
 
-        static void printDefeat()
+        static void printDefeat() //Print the defeat of the player.
         {
             Console.Clear();
             Console.WriteLine("HO NONNNN tu as PERDU ! c'est dommage... c'est pas grave peut être la prochaine fois");
@@ -215,7 +215,7 @@ namespace PenduPOO
             }
         }
 
-        static void printVictory()
+        static void printVictory() //Print the victory of the player.
         {
 
             Console.Clear();
@@ -234,7 +234,7 @@ namespace PenduPOO
             }
         }
 
-        static bool isWIn()
+        static bool isWIn() //return true if the array printableTab (witch countains every letters that the player give us and wich are in the word) and the word are equal : win 
         {
 ;
             for (int i=0; i < Word.Length;i++)
@@ -247,7 +247,7 @@ namespace PenduPOO
             return true;
         }
 
-        static bool isInWord(char charChoose)
+        static bool isInWord(char charChoose) // return true if the char is in word
         {
             bool inWord = false; 
 
@@ -262,7 +262,7 @@ namespace PenduPOO
             return inWord;
         }
 
-        static char ChoiceChar()
+        static char ChoiceChar() //permit to choose a char 
         {
             Console.WriteLine("Donnes nous une lettre :");
             string character = Console.ReadLine();
