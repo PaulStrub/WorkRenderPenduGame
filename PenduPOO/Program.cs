@@ -20,7 +20,7 @@ namespace PenduPOO
         static void Play() // starting of the game 
         {
             Console.WriteLine("Bonjour ! bienvenue dans ce jeu du pendu ");
-            Thread.Sleep(500);
+            Thread.Sleep(1500);
             Console.WriteLine("Les règles sont simples, tu dois trouver le mot caché. Pour cela tu devra me donner une lettre à la fois et je te dirais si elle fait partie du mot que tu dois deviner. Attention tu n'as que 6 erreurs possible avant de perdre");
             ChoiceLvl();
         }
@@ -265,7 +265,7 @@ namespace PenduPOO
             {
                 Console.WriteLine("Il te reste " + HP + " points de vie");
             }
-            if (HP == 1)
+            else if (HP < 2)
             {
                 Console.WriteLine("Il te reste " + HP + " point de vie");
             }
@@ -363,6 +363,10 @@ namespace PenduPOO
             if (answer == "1")
             {
                 Console.Clear();
+                NotLetterInWord.Clear();
+                Word = null;
+                PrintableTab = null;
+                HP = 6;
                 ChoiceLvl();
             }
             else
@@ -382,6 +386,10 @@ namespace PenduPOO
             if (answer == "1")
             {
                 Console.Clear();
+                NotLetterInWord.Clear();
+                Word = null;
+                PrintableTab = null;
+                HP = 6;
                 ChoiceLvl();
             }
             else
