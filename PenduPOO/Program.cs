@@ -20,14 +20,16 @@ namespace PenduPOO
         static void Play() // starting of the game 
         {
             Console.WriteLine("Bonjour ! bienvenue dans ce jeu du pendu ");
-            Thread.Sleep(1500);
-            Console.WriteLine("Les règles sont simples, tu dois trouver le mot caché. Pour cela tu devra me donner une lettre à la fois et je te dirais si elle fait partie du mot que tu dois deviner. Attention tu n'as que 6 erreurs possible avant de perdre");
             ChoiceLvl();
         }
 
         static void ChoiceLvl() // choice what difficulty the player want 
         {
-            Console.WriteLine("Comme on est gentil on te laisse le choix de la difficulté, écrit 1 pour un niveau facile : les pays ! et 2 pour un niveau impossible : les mots inconnus de la langue française ! ");
+            Console.WriteLine("Comme on est gentil on te laisse le choix de la difficulté, écris ");
+            Console.WriteLine(" - 1 pour un niveau facile :");
+            Console.WriteLine("     les pays !");
+            Console.WriteLine(" - 2 pour un niveau impossible :");
+            Console.WriteLine("     les mots inconnus de la langue française ! ");
             string answer = Console.ReadLine();
             while (answer != "1" && answer != "2")
             {
@@ -230,9 +232,8 @@ namespace PenduPOO
 
         static bool PlayTime() //function that is player turn 
         {
-
+            printPendu();
             bool winGame = false;
-
             while ( !winGame)
             {
                 char charChoose = ChoiceChar();
@@ -243,7 +244,7 @@ namespace PenduPOO
                     NotLetterInWord.Push(charChoose); 
                 }
                 winGame = isWIn();
-                if (HP < 0)
+                if (HP == 0)
                 {
                     printDefeat();
                     return false;
@@ -261,95 +262,90 @@ namespace PenduPOO
         {
 
             Console.Clear();
-            if (HP > 1)
+            if (HP == 0)
             {
-                Console.WriteLine("Il te reste " + HP + " points de vie");
+                Console.WriteLine("  +-----+\n" +
+                    "  |    \\|\n" +
+                    "  0     |\n" +
+                    " /|\\    |\n" +
+                    "        |\n" +
+                    "   -----------");
+                
             }
-            else if (HP < 2)
+            else
             {
-                Console.WriteLine("Il te reste " + HP + " point de vie");
-            }
-            Console.WriteLine("");
-            Console.WriteLine("Les letres que tu as deja donné et qui ne font pas partie du mot sont les suivantes : ");
-            foreach (char elem in NotLetterInWord)
-            {
-                Console.Write(elem + " ;");
-            }
-            Console.WriteLine();
-            if (HP == 6)
-            {
-                Console.WriteLine("---------");
+                if (HP > 1)
+                {
+                    Console.WriteLine("Il te reste " + HP + " points de vie");
+                }
+                else if (HP < 2)
+                {
+                    Console.WriteLine("Il te reste " + HP + " point de vie");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("Les letres que tu as deja donné et qui ne font pas partie du mot sont les suivantes : ");
+                foreach (char elem in NotLetterInWord)
+                {
+                    Console.Write(elem + " ;");
+                }
+                Console.WriteLine();
+                Console.WriteLine("  +-----+");
                 Console.WriteLine("  |    \\|");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
+                if (HP < 6)
+                {
+                    Console.WriteLine("  0     |");
+                }
+                else
+                {
+                    Console.WriteLine("        |");
+                }
+                if (HP < 5)
+                {
+                    if (HP < 4)
+                    {
+                        if (HP < 3)
+                        {
+                            Console.WriteLine(" /|\\    |");
+                        }
+                        else
+                        {
+                            Console.WriteLine(" /|     |");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("  |     |");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("        |");
+                }
+                if (HP < 3)
+                {
+                    if (HP < 2)
+                    {
+                        Console.WriteLine(" / \\    |");
+                    }
+                    else
+                    {
+                        Console.WriteLine(" /      |");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("        |");
+                }
                 Console.WriteLine("        |");
                 Console.WriteLine("   -----------");
-            }
-            else if (HP == 5)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            else if (HP == 4)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine(" /      |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            else if (HP == 3)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine(" /|     |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            else if (HP == 2)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine(" /|\\    |");
-                Console.WriteLine("        |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            else if (HP == 1)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine(" /|\\    |");
-                Console.WriteLine(" /      |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            else if (HP == 0)
-            {
-                Console.WriteLine("---------");
-                Console.WriteLine("  |    \\|");
-                Console.WriteLine("  0     |");
-                Console.WriteLine(" /|\\    |");
-                Console.WriteLine(" / \\    |");
-                Console.WriteLine("        |");
-                Console.WriteLine("   -----------");
-            }
-            Console.WriteLine("Le mot ressemble pour l'instant à ceci : ");
-            foreach(char charP in PrintableTab)
-            {
-                Console.Write(charP + " ");
+
+
+                Console.WriteLine("Le mot ressemble pour l'instant à ceci : ");
+                foreach (char charP in PrintableTab)
+                {
+                    Console.Write(charP + " ");
+                }
+                Console.WriteLine(" ");
             }
         }
 
@@ -430,41 +426,48 @@ namespace PenduPOO
         {
             Console.WriteLine("Donnes nous une lettre :");
             string character = Console.ReadLine();
-
+            char Charchoice;
             bool notInTabPrintable = false;
             bool notInTabNotLetterInWord = false;
-            foreach (char charP in PrintableTab)
+            
+            if (character.Length == 1)
             {
-                if (charP == character[0])
+                Charchoice = Char.Parse(character);
+                Charchoice = Char.ToLower(Charchoice);
+                foreach (char charP in PrintableTab)
                 {
-                    notInTabPrintable = true;
+                    if (charP ==Charchoice)
+                    {
+                        notInTabPrintable = true;
+                    }
                 }
-            }
-            foreach (char charN in NotLetterInWord)
-            {
-                if (charN == character[0])
+                foreach (char charN in NotLetterInWord)
                 {
-                    notInTabNotLetterInWord = true;
+                    if (charN == Charchoice)
+                    {
+                        notInTabNotLetterInWord = true;
+                    }
                 }
-            }
-            if (character.Length == 1  && !notInTabNotLetterInWord && !notInTabPrintable )
-
-            {
-                if ((character[0] >= 'a' && character[0] <= 'z') || (character[0] >= 'A' && character[0] <= 'Z')){
-                    return character[0];
-                }
-                else
-                {
-                    Console.WriteLine("Il nous faut une lettre de l'alphabet et bien une seule. Verifie egalement que tu n'aies pas deja donne cette lettre");
-                    return ChoiceChar();
-                }
+                
+                
+                    if ( Charchoice >= 'a' && Charchoice <= 'z' && !notInTabNotLetterInWord && !notInTabPrintable)
+                    {
+                        return Charchoice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Il nous faut une lettre de l'alphabet et bien une seule. Verifie egalement que tu n'aies pas deja donne cette lettre");
+                        return ChoiceChar();
+                    }
                     
-            }
+                }
             else
             {
                 Console.WriteLine("Il nous faut une lettre de l'alphabet et bien une seule. Verifie egalement que tu n'aies pas deja donne cette lettre");
                 return ChoiceChar();
             }
         }
+
+
     }
 }
